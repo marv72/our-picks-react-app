@@ -35,4 +35,10 @@ steps:
       entrypoint: 'gsutil'
       args: ['rsync', '-r', '/persistent_volume/public', 'gs://ourpicks.games/']
 
+    # Change permission on Google Cloud Storage
+    - name: 'gcr.io/cloud-builders/gcloud'
+      id: Change Permissions on Google Cloud Storage...
+      entrypoint: 'gsutil'
+      args: ['iam', 'ch', 'allUsers:objectViewer', 'gs://ourpicks.games/']
+
 timeout: 30m0s
