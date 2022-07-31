@@ -1,0 +1,38 @@
+steps:
+    # Install dependencies
+    - name: node:14.16.1
+      id: Installing dependencies...
+      entrypoint: npm
+      args: ['install']
+      waitFor: ['-'] # Begin immediately
+
+    # npm build
+    - name: node:14.16.1
+      id: Building static web site...
+      entrypoint: npm
+      args: ['run', 'build']
+      waitFor:
+          - Installing dependencies...
+
+    # Copy Gatsby site
+    - name: node:14.16.1
+      id: Copy static build...
+      volumes:
+          - name: 'vol1'
+            path: '/persistent_volume'
+      entrypoint: bash
+      args:
+          - '-c'
+          - |
+              cp -R /workspace/build /persistent_volume/public
+
+    # Copy website to Google Cloud Storage
+    - name: 'gcr.io/cloud-builders/gcloud'
+      id: Copy website to Google Cloud Storage...
+      volumes:
+          - name: 'vol1'
+            path: '/persistent_volume'
+      entrypoint: 'gsutil'
+      args: ['rsync', '-r', '/persistent_volume/public', 'gs://ourpicks.games/']
+
+timeout: 30m0s
