@@ -41,4 +41,10 @@ steps:
       entrypoint: 'gsutil'
       args: ['iam', 'ch', 'allUsers:objectViewer', 'gs://ourpicks.games/']
 
+    # Set Main Page Suffix on Google Cloud Storage
+    - name: 'gcr.io/cloud-builders/gcloud'
+      id: SetMain page suffix on Google Cloud Storage...
+      entrypoint: 'gsutil'
+      args: ['web', 'set', '-m', 'index.html', '-e', '404.html', 'gs://ourpicks.games/']
+
 timeout: 30m0s
