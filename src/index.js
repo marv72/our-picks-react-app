@@ -20,7 +20,7 @@ import reportWebVitals from './reportWebVitals';
 // ==============================|| MAIN - REACT DOM RENDER  ||============================== //
 
 const client = new ApolloClient({
-    uri: 'http://localhost:4000',
+    uri: 'https://our-picks-api-gateway-5jfsiaaa.ts.gateway.dev',
     cache: new InMemoryCache()
 });
 
