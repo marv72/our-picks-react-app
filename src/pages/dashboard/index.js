@@ -78,7 +78,7 @@ const DashboardDefault = () => {
                     <Grid item />
                 </Grid>
                 <MainCard sx={{ mt: 2 }} content={false}>
-                    <LatestPicks id="62ae9b2d51acdac5f9bd2147" />
+                    <LatestPicks id="630b3c347caf58b5a3e7c9fd" />
                 </MainCard>
             </Grid>
         </Grid>

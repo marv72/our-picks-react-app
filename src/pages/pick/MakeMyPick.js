@@ -72,7 +72,7 @@ const MakeMyPick = () => {
     const handleClick = async () => {
         try {
             const { data } = await setPick({
-                variables: { id: '62ae9b2d51acdac5f9bd2147', name: location.state.pick, username: 'martin@arndts.co.nz' }
+                variables: { id: '630b3c347caf58b5a3e7c9fd', name: location.state.pick, username: 'martin@arndts.co.nz' }
             });
             console.log('data: ', data);
             if (data.makePick.success === false) {
